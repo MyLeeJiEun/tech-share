@@ -491,11 +491,11 @@
     <div>Vol.01</div>
   </div>
   <div class="frame" style="display:grid; gap:4vh; align-content:center; min-height:80vh">
-    <div class="kicker" data-anim>一次桌面 Bug 排查 + 好用工具分享</div>
+    <div class="kicker" data-anim>技术分享 · 两个部分</div>
     <h1 class="h-hero" style="font-size:7.5vw" data-anim>从密码框到 Qt 上游</h1>
-    <h2 class="h-sub" data-anim>Bug修复 &amp; 日常工具箱</h2>
-    <p class="lead" style="max-width:60vw" data-anim>
-      第一部分分享修复BUG追到 Qt 源码；第二部分分享我日常在用的开发资源。
+    <h2 class="h-sub" data-anim>Part 1 · Bug 修复历程　｜　Part 2 · 工具资源分享</h2>
+    <p class="lead" style="max-width:55vw" data-anim>
+      一次桌面 Bug 排查 + 几个好用的开发工具
     </p>
     <div class="meta-row" data-anim>
       <span>zhaofangxun</span><span>·</span><span>25 分钟</span>
@@ -545,7 +545,7 @@
     <div class="kicker" data-anim>Part 1</div>
     <h1 class="h-hero" style="font-size:8.5vw" data-anim>Bug → Patch</h1>
     <p class="lead" style="max-width:55vw" data-anim>
-      一个密码框输入法问题，从业务现象一路追到 Qt 源码，最终向上游提交了修复。
+      一个密码框输入法问题，从现象一路追到 Qt 源码，最终向上游提交了修复。
     </p>
   </div>
   <div class="foot">
@@ -594,16 +594,16 @@
     <div>Part 1 · 排查</div>
     <div>05 / 23</div>
   </div>
-  <div class="frame" style="padding-top:6vh">
+  <div class="frame" style="padding-top:4vh">
     <div class="kicker" data-anim>第一层 · DTK</div>
     <h2 class="h-xl" data-anim>DPasswordEdit（DTK 控件）初始化时已显式关闭输入法</h2>
-    <div style="margin-top:5vh; font-family:var(--mono); font-size:1.4vw; line-height:2.2; padding:3.5vh 3.5vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px; background:rgba(var(--paper-rgb),.04)">
+    <div style="margin-top:3vh; font-family:var(--mono); font-size:1.2vw; line-height:1.8; padding:2vh 3vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px; background:rgba(var(--paper-rgb),.04)">
       <div>lineEdit()-><span style="color:#e89152">setEchoMode</span>(QLineEdit::Password);</div>
       <div>lineEdit()-><span style="color:#e89152">setAttribute</span>(Qt::WA_InputMethodEnabled, <span style="color:#c83c3c">false</span>);</div>
     </div>
-    <p class="lead" style="margin-top:3vh" data-anim>切换明文只改 <span style="font-family:var(--mono)">EchoMode</span>，没有重新打开输入法，也没有重新设置 <span style="font-family:var(--mono)">WA_InputMethodEnabled</span>。</p>
-    <p class="lead" style="margin-top:2vh" data-anim><strong>问题：</strong>设置了 <span style="font-family:var(--mono)">WA_InputMethodEnabled=false</span> 的 <span style="font-family:var(--mono)">QLineEdit</span>，为什么从 <span style="font-family:var(--mono)">Password</span> 切到 <span style="font-family:var(--mono)">Normal</span> 后输入法又恢复了？</p>
-    <p class="lead" style="margin-top:2vh" data-anim>我最初的反应是：是不是 DTK 切换 <span style="font-family:var(--mono)">EchoMode</span> 时漏掉了什么？于是手动在 <span style="font-family:var(--mono)">setEchoMode(Normal)</span> 之后补了一行 <span style="font-family:var(--mono)">setAttribute(Qt::WA_InputMethodEnabled, false)</span> —— <strong>完全没有用</strong>。这个现象第一次告诉我：问题可能不在 DTK 层，而在 Qt 的输入法查询链路本身不再尊重这个 attribute 了。</p>
+    <p class="lead" style="margin-top:2vh; font-size:1.2vw; line-height:1.7" data-anim>切换明文只改 <span style="font-family:var(--mono)">EchoMode</span>，没有重新打开输入法，也没有重新设置 <span style="font-family:var(--mono)">WA_InputMethodEnabled</span>。</p>
+    <p class="lead" style="margin-top:1.5vh; font-size:1.2vw; line-height:1.7" data-anim><strong>问题：</strong>设置了 <span style="font-family:var(--mono)">WA_InputMethodEnabled=false</span> 的 <span style="font-family:var(--mono)">QLineEdit</span>，为什么从 <span style="font-family:var(--mono)">Password</span> 切到 <span style="font-family:var(--mono)">Normal</span> 后输入法又恢复了？</p>
+    <p class="lead" style="margin-top:1.5vh; font-size:1.15vw; line-height:1.6" data-anim>我最初的反应是：是不是 DTK 切换 <span style="font-family:var(--mono)">EchoMode</span> 时漏掉了什么？于是手动在 <span style="font-family:var(--mono)">setEchoMode(Normal)</span> 之后补了一行 <span style="font-family:var(--mono)">setAttribute(Qt::WA_InputMethodEnabled, false)</span> —— <strong>完全没有用</strong>。这个现象第一次告诉我：问题可能不在 DTK 层，而在 Qt 的输入法查询链路本身不再尊重这个 attribute 了。</p>
   </div>
   <div class="foot">
     <div>DTK · DPasswordEdit::init()</div>
@@ -648,28 +648,28 @@
     <div>Part 1 · 链路</div>
     <div>07 / 23</div>
   </div>
-  <div class="frame" style="padding-top:6vh">
+  <div class="frame" style="padding-top:4vh">
     <div class="kicker" data-anim>两个关键事件：InputMethodQuery vs InputMethod</div>
     <h2 class="h-xl" data-anim>切到 Normal 后发生了什么</h2>
-    <div style="margin-top:3vh; display:grid; grid-template-columns:1.5fr 1fr 2.5fr; gap:1.5vw; font-size:1.15vw" data-anim>
-      <div class="stat-label" style="font-size:1.1vw">InputMethodQuery</div>
+    <div style="margin-top:2vh; display:grid; grid-template-columns:1.5fr 1fr 2.5fr; gap:1vw; font-size:1.0vw" data-anim>
+      <div class="stat-label" style="font-size:1.0vw">InputMethodQuery</div>
       <div style="color:rgba(var(--paper-rgb),.5)">输入法 → 查询控件</div>
       <div style="color:rgba(var(--paper-rgb),.5)">问"能接收输入法吗？"</div>
-      <div class="stat-label" style="font-size:1.1vw">InputMethod</div>
+      <div class="stat-label" style="font-size:1.0vw">InputMethod</div>
       <div style="color:rgba(var(--paper-rgb),.5)">输入法 → 提交控件</div>
       <div style="color:rgba(var(--paper-rgb),.5)">提交候选词/预编辑</div>
     </div>
-    <div style="font-size:1.15vw; color:rgba(var(--paper-rgb),.5); margin-top:2vh" data-anim>这次问题卡在<span style="color:var(--paper)">查询阶段</span>。</div>
-    <div style="margin-top:3vh; font-family:var(--mono); font-size:1.15vw; line-height:1.9; padding:3vh 3vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px; background:rgba(var(--paper-rgb),.04)">
+    <div style="font-size:1.0vw; color:rgba(var(--paper-rgb),.5); margin-top:1.5vh" data-anim>这次问题卡在<span style="color:var(--paper)">查询阶段</span>。</div>
+    <div style="margin-top:2vh; font-family:var(--mono); font-size:1.0vw; line-height:1.7; padding:2vh 3vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px; background:rgba(var(--paper-rgb),.04)">
       <div>setEchoMode(<span style="color:#e89152">Normal</span>)</div>
       <div style="color:rgba(var(--paper-rgb),.5)">  → setInputMethodHints() 清除了 ImhHiddenText / ImhSensitiveData</div>
-      <div style="color:rgba(var(--paper-rgb),.5)">  → QInputMethod::update(Qt::ImHints) // 通知平台输入法</div>
+      <div style="color:rgba(var(--paper-rgb),.5)">  → QInputMethod::update(Qt::ImHints)</div>
       <div style="color:rgba(var(--paper-rgb),.5)">  → IBus 发现不再是 HiddenText → 重新查询 ImEnabled</div>
       <div style="color:rgba(var(--paper-rgb),.5)">  → QWidget::event() → case InputMethodQuery</div>
       <div style="color:rgba(var(--paper-rgb),.5)">  → QLineEdit::inputMethodQuery(ImEnabled)</div>
       <div style="color:#c83c3c">  → return isEnabled() && !isReadOnly(); // true!</div>
     </div>
-    <p class="lead" style="margin-top:4vh" data-anim>
+    <p class="lead" style="margin-top:2vh; font-size:1.1vw" data-anim>
       <span style="font-family:var(--mono)">setEchoMode()</span> 不直接发 <span style="font-family:var(--mono)">InputMethodQuery</span>，但修改 hints 后触发平台重新查询——返回值漏掉了 attribute 检查。
     </p>
   </div>
@@ -687,8 +687,7 @@
   </div>
   <div class="frame" style="padding-top:6vh">
     <div class="kicker" data-anim>Qt5 · 行为正确</div>
-    <h2 class="h-xl" data-anim>先检查 attribute，再处理查询</h2>
-    <div style="margin-top:4vh; font-family:var(--mono); font-size:1.05vw; line-height:1.7; padding:2.5vh 3vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px; background:rgba(42,125,42,.03)">
+    <div style="margin-top:3vh; font-family:var(--mono); font-size:0.9vw; line-height:1.55; padding:2vh 2.5vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px; background:rgba(42,125,42,.03)">
       <div style="color:rgba(var(--ink-rgb),.5)">// qwidget.cpp — Qt 5.15</div>
       <div><span style="color:#c83c3c">case</span> QEvent::InputMethodQuery:</div>
       <div>&nbsp;&nbsp;<span style="color:#c83c3c">if</span> (<span style="color:#e89152">testAttribute</span>(Qt::WA_InputMethodEnabled)) {</div>
@@ -709,7 +708,7 @@
       <div>&nbsp;&nbsp;<span style="color:rgba(var(--ink-rgb),.5)">// WA_InputMethodEnabled=false → 整个查询被跳过 → 输入法拿不到 ImEnabled=true</span></div>
       <div>&nbsp;&nbsp;<span style="color:#c83c3c">break</span>;</div>
     </div>
-    <p class="lead" style="margin-top:3vh" data-anim><span style="font-family:var(--mono)">WA_InputMethodEnabled=false</span> 作为<strong>外层 gate</strong>，整段查询逻辑都不会执行。</p>
+    <p class="lead" style="margin-top:2vh; font-size:1.1vw" data-anim><span style="font-family:var(--mono)">WA_InputMethodEnabled=false</span> 作为<strong>外层 gate</strong>，整段查询逻辑都不会执行。</p>
   </div>
   <div class="foot">
     <div>QWidget::event() — Qt 5.15</div>
@@ -725,8 +724,7 @@
   </div>
   <div class="frame" style="padding-top:6vh">
     <div class="kicker" data-anim>Qt6 · 行为反常</div>
-    <h2 class="h-xl" data-anim>去掉 attribute gate，先调虚函数</h2>
-    <div style="margin-top:3.5vh; font-family:var(--mono); font-size:1.0vw; line-height:1.65; padding:2vh 3vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px; background:rgba(var(--paper-rgb),.04)">
+    <div style="margin-top:2.5vh; font-family:var(--mono); font-size:0.85vw; line-height:1.5; padding:1.5vh 2.5vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px; background:rgba(var(--paper-rgb),.04)">
       <div style="color:rgba(var(--paper-rgb),.5)">// qwidget.cpp — Qt 6.x</div>
       <div><span style="color:#c83c3c">case</span> QEvent::InputMethodQuery: {</div>
       <div>&nbsp;&nbsp;QInputMethodQueryEvent *query = static_cast&lt;…&gt;(event);</div>
@@ -744,10 +742,7 @@
       <div>&nbsp;&nbsp;query->accept();</div>
       <div>&nbsp;&nbsp;<span style="color:#c83c3c">break</span>;</div>
       <div>}</div>
-    </div>
-    <div style="margin-top:3vh; padding:2vh 3vw; border:2px solid rgba(200,60,60,.4); border-radius:4px" data-anim>
-      <div style="font-size:1.3vw; font-weight:600; color:#c83c3c">QLineEdit 6.x 新增 ImEnabled 分支：</div>
-      <div style="font-family:var(--mono); font-size:1.15vw; margin-top:1vh; line-height:1.7">
+    <div style="margin-top:2vh; padding:1.5vh 2.5vw; border:2px solid rgba(200,60,60,.4); border-radius:4px" data-anim>
         <span style="color:#c83c3c">case</span> Qt::ImEnabled:<br>
         &nbsp;&nbsp;<span style="color:#c83c3c">return</span> isEnabled() && !isReadOnly();<br>
         &nbsp;&nbsp;<span style="color:#c83c3c">// ⚠️ 返回了有效 QVariant → fallback 不可达</span><br>
@@ -794,29 +789,29 @@
     <div>Part 1 · 根因</div>
     <div>11 / 23</div>
   </div>
-  <div class="frame" style="padding-top:5vh">
+  <div class="frame" style="padding-top:3vh">
     <div class="kicker" data-anim>前置：setEchoMode 设置了哪些 hints</div>
     <h2 class="h-xl" data-anim>IBus 声明不支持 HiddenTextCapability</h2>
-    <div style="margin-top:3vh; font-family:var(--mono); font-size:1.0vw; line-height:1.7; padding:2vh 2.5vw; border:1px solid rgba(var(--paper-rgb),.10); border-radius:4px; background:rgba(var(--paper-rgb),.03)" data-anim>
+    <div style="margin-top:2vh; font-family:var(--mono); font-size:0.85vw; line-height:1.5; padding:1.5vh 2vw; border:1px solid rgba(var(--paper-rgb),.10); border-radius:4px; background:rgba(var(--paper-rgb),.03)" data-anim>
       <div style="color:rgba(var(--paper-rgb),.5)">// qlineedit.cpp — setEchoMode(Password) 会设置：</div>
       <div style="color:rgba(var(--paper-rgb),.5)">//   ImhHiddenText | ImhSensitiveData | ImhNoAutoUppercase | ImhNoPredictiveText</div>
       <div style="color:rgba(var(--paper-rgb),.5)">// setInputMethodHints(imHints) → QInputMethod::update(Qt::ImHints)</div>
     </div>
-    <div style="margin-top:3vh; font-family:var(--mono); font-size:1.15vw; line-height:1.9; padding:2.5vh 3vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px; background:rgba(var(--paper-rgb),.04)">
+    <div style="margin-top:2vh; font-family:var(--mono); font-size:0.9vw; line-height:1.55; padding:1.5vh 2.5vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px; background:rgba(var(--paper-rgb),.04)">
       <div style="color:rgba(var(--paper-rgb),.5)">// qibusplatforminputcontext.cpp</div>
       <div><span style="color:#c83c3c">bool</span> QIBusPlatformInputContext::<span style="color:#e89152">hasCapability</span>(Capability c) <span style="color:#c83c3c">const</span> {</div>
       <div>&nbsp;&nbsp;<span style="color:#c83c3c">case</span> HiddenTextCapability:</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c83c3c">return false</span>; <span style="color:rgba(var(--paper-rgb),.5)">// QTBUG-40691 — 密码框不应弹出输入法</span></div>
       <div>}</div>
     </div>
-    <div style="margin-top:3vh; font-family:var(--mono); font-size:1.1vw; line-height:1.8; padding:2vh 3vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px" data-anim>
+    <div style="margin-top:2vh; font-family:var(--mono); font-size:0.85vw; line-height:1.55; padding:1.5vh 2.5vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px" data-anim>
       <div style="color:rgba(var(--paper-rgb),.5)">// qinputmethod.cpp</div>
       <div><span style="color:#c83c3c">static inline bool</span> <span style="color:#e89152">platformSupportsHiddenText</span>() {</div>
       <div>&nbsp;&nbsp;<span style="color:#c83c3c">return</span> inputContext && inputContext->hasCapability(HiddenTextCapability);</div>
       <div>}</div>
-      <div style="color:rgba(var(--paper-rgb),.5); margin-top:1vh">// → Linux + IBus: false</div>
+      <div style="color:rgba(var(--paper-rgb),.5); margin-top:0.5vh">// → Linux + IBus: false</div>
     </div>
-    <div style="margin-top:3vh; font-family:var(--mono); font-size:1.05vw; line-height:1.7; padding:2vh 3vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px" data-anim>
+    <div style="margin-top:2vh; font-family:var(--mono); font-size:0.8vw; line-height:1.5; padding:1.5vh 2.5vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px" data-anim>
       <div style="color:rgba(var(--paper-rgb),.5)">// qinputmethod.cpp — objectAcceptsInputMethod()</div>
       <div><span style="color:#c83c3c">bool</span> QInputMethodPrivate::<span style="color:#e89152">objectAcceptsInputMethod</span>(QObject *obj) {</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c83c3c">static const bool</span> supportsHiddenText = platformSupportsHiddenText();</div>
