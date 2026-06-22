@@ -12,7 +12,7 @@
     /* ============ 主题色(默认:🖋 墨水经典) ============
        切换主题:从 references/themes.md 复制对应的 :root 块
        整体替换这几行(--ink / --ink-rgb / --paper / --paper-rgb)
-       其他地方散落的 rgba() 都走 var(--ink-rgb) / var(--paper-rgb),无需逐处改 */
+       其他地方散落的 rgba() 都走 var(--paper-rgb) / var(--paper-rgb),无需逐处改 */
     --ink:#0a0a0b;
     --ink-rgb:10,10,11;
     --paper:#f1efea;
@@ -57,7 +57,7 @@
   /* Hero 页顶底微弱渐隐，保证 chrome/foot 区域可读 */
   .slide.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
   .slide.hero.light::after{background:linear-gradient(180deg,rgba(var(--paper-rgb),.28) 0%,rgba(var(--paper-rgb),0) 14%,rgba(var(--paper-rgb),0) 86%,rgba(var(--paper-rgb),.28) 100%)}
-  .slide.hero.dark::after{background:linear-gradient(180deg,rgba(var(--ink-rgb),.32) 0%,rgba(var(--ink-rgb),0) 14%,rgba(var(--ink-rgb),0) 86%,rgba(var(--ink-rgb),.32) 100%)}
+  .slide.hero.dark::after{background:linear-gradient(180deg,rgba(var(--ink-rgb),.32) 0%,rgba(var(--ink-rgb),0) 14%,rgba(var(--ink-rgb),0) 86%,rgba(var(--ink-rgb),.32) 100%) 100%)}
 
   /* ============ Magazine chrome：顶部 meta + 底部 foot ============ */
   .chrome{display:flex;justify-content:space-between;align-items:flex-start;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
@@ -114,7 +114,7 @@
 
   /* ============ Callout（引用框） ============ */
   .callout{padding:3vh 2.4vw;border-left:3px solid currentColor;position:relative;font-family:var(--serif-zh);font-size:max(15px,1.2vw);line-height:1.55;opacity:.92}
-  .slide.light .callout{background:rgba(var(--ink-rgb),.05)}
+  .slide.light .callout{background:rgba(var(--paper-rgb),.05)}
   .slide.dark .callout{background:rgba(var(--paper-rgb),.06)}
   .callout .cite{display:block;margin-top:1.6vh;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
   .callout .q-big{font-family:var(--serif-zh);font-weight:600;font-size:max(17px,1.6vw);line-height:1.42}
@@ -144,7 +144,7 @@
   .sign{font-family:var(--serif-en);font-style:italic;font-weight:500;font-size:2vw;opacity:.7}
   .hi{position:relative;display:inline}
   .slide.dark .hi::after{content:"";position:absolute;left:-.1em;right:-.1em;bottom:-.05em;height:.28em;background:rgba(var(--paper-rgb),.15);z-index:-1}
-  .slide.light .hi::after{content:"";position:absolute;left:-.1em;right:-.1em;bottom:-.05em;height:.28em;background:rgba(var(--ink-rgb),.08);z-index:-1}
+  .slide.light .hi::after{content:"";position:absolute;left:-.1em;right:-.1em;bottom:-.05em;height:.28em;background:rgba(var(--paper-rgb),.08);z-index:-1}
 
   /* ============ Icons（Lucide via CDN） ============ */
   .ico{width:1em;height:1em;display:inline-block;vertical-align:-.12em;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
@@ -194,8 +194,8 @@
   #nav .dot:hover{background:rgba(255,255,255,.5);transform:scale(1.15)}
   #nav .dot.active{background:rgba(255,255,255,.95);width:22px;border-radius:999px}
   body.light-bg #nav{background:rgba(255,255,255,.25)}
-  body.light-bg #nav .dot{background:rgba(var(--ink-rgb),.25)}
-  body.light-bg #nav .dot.active{background:rgba(var(--ink-rgb),.9)}
+  body.light-bg #nav .dot{background:rgba(var(--paper-rgb),.25)}
+  body.light-bg #nav .dot.active{background:rgba(var(--paper-rgb),.9)}
   #hint{position:fixed;bottom:3vh;right:3vw;z-index:30;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;mix-blend-mode:difference;color:#aaa}
   body.low-power #hint{opacity:.72;color:var(--paper);mix-blend-mode:normal}
   body.light-bg.low-power #hint{color:var(--ink)}
@@ -566,12 +566,12 @@
     <div class="kicker" data-anim>密码框使用者看到的</div>
     <h2 class="h-xl" data-anim>密码框切明文后，输入法恢复了</h2>
     <div style="margin-top:6vh; display:grid; gap:2vh">
-      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 3vw; border:1px solid rgba(var(--ink-rgb),.15); border-radius:4px">
+      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 3vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px">
         <div class="stat-label">状态</div>
         <div class="stat-label">预期</div>
         <div class="stat-label">实际（Qt6）</div>
       </div>
-      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 3vw; border:1px solid rgba(var(--ink-rgb),.1); border-radius:4px">
+      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 3vw; border:1px solid rgba(var(--paper-rgb),.1); border-radius:4px">
         <div style="font-size:2vw; font-weight:500">密文 ••••</div>
         <div style="font-size:2vw">无法输入中文</div>
         <div style="font-size:2vw; color:#2a7d2a">✅ 符合预期</div>
@@ -614,28 +614,28 @@
 </section>
 
 <!-- ===== S06 发现 Qt 版本差异 + 最小复现 ===== -->
-<section class="slide dark">
+<section class="slide dark" style="overflow-y:auto">
   <div class="chrome">
     <div>Part 1 · 排查</div>
     <div>06 / 23</div>
   </div>
-  <div class="frame" style="padding-top:6vh">
+  <div class="frame" style="padding-top:4vh; overflow-y:auto; max-height:84vh">
     <div class="kicker" data-anim>第二层 · 版本差异</div>
     <h2 class="h-xl" data-anim>DTK 项目自带 example demo</h2>
     <p class="lead" style="margin-top:3vh" data-anim>我一开始由于手误运行的了DTK5（编译自Qt5）自带的example，发现行为完全符合预期——密码框不管密文明文都无法输入中文，这完全出乎我的意料。<strong>好在我很快就反应过来，自己跑错了example，然后发现在 DTK6(编译自Qt6) 自带的example中是存在预期中的问题的 。</strong></p>
     <div style="margin-top:4vh; display:grid; gap:3vh">
-      <div data-anim style="display:grid; grid-template-columns:1fr 1fr; gap:4vw; padding:3vh 3vw; border:1px solid rgba(var(--ink-rgb),.1); border-radius:4px">
+      <div data-anim style="display:grid; grid-template-columns:1fr 1fr; gap:4vw; padding:3vh 3vw; border:1px solid rgba(var(--paper-rgb),.1); border-radius:4px">
         <div><div class="stat-label" style="color:#2a7d2a">Qt5 / DTK5</div><div style="font-size:1.6vw; margin-top:1vh">密文❌中文 · 明文❌中文 ✅</div></div>
         <div><div class="stat-label" style="color:#c83c3c">Qt6 / DTK6</div><div style="font-size:1.6vw; margin-top:1vh">密文❌中文 ✅ · 明文✅中文 ❌</div></div>
       </div>
     </div>
     <p class="lead" style="margin-top:3vh" data-anim>这个对比直接把排查方向从"DPasswordEdit 写错了什么"切换到了<strong>"Qt6 的输入法链路发生了什么变化"</strong>。</p>
-    <div data-anim style="margin-top:4vh; font-family:var(--mono); font-size:1.4vw; padding:3vh 3vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px">
-      <span style="color:rgba(var(--ink-rgb),.5)">// 最小复现 — 3 个 set 调用</span><br>
+    <div data-anim style="margin-top:4vh; font-family:var(--mono); font-size:1.4vw; padding:3vh 3vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px">
+      <span style="color:rgba(var(--paper-rgb),.5)">// 最小复现 — 3 个 set 调用</span><br>
       QLineEdit *edit = <span style="color:#c83c3c">new</span> QLineEdit;<br>
       edit->setAttribute(Qt::WA_InputMethodEnabled, <span style="color:#c83c3c">false</span>);<br>
       edit->setEchoMode(QLineEdit::Password);<br>
-      edit->setEchoMode(QLineEdit::Normal); &nbsp;<span style="color:rgba(var(--ink-rgb),.4)">// ← Qt6 下输入法恢复</span>
+      edit->setEchoMode(QLineEdit::Normal); &nbsp;<span style="color:rgba(var(--paper-rgb),.4)">// ← Qt6 下输入法恢复</span>
     </div>
   </div>
   <div class="foot">
@@ -689,25 +689,25 @@
   </div>
   <div class="frame" style="padding-top:6vh">
     <div class="kicker" data-anim>Qt5 · 行为正确</div>
-    <div style="margin-top:3vh; font-family:var(--mono); font-size:0.9vw; line-height:1.55; padding:2vh 2.5vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px; background:rgba(42,125,42,.03)">
-      <div style="color:rgba(var(--ink-rgb),.5)">// qwidget.cpp — Qt 5.15</div>
+    <div style="margin-top:3vh; font-family:var(--mono); font-size:0.9vw; line-height:1.55; padding:2vh 2.5vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px; background:rgba(42,125,42,.03)">
+      <div style="color:rgba(var(--paper-rgb),.5)">// qwidget.cpp — Qt 5.15</div>
       <div><span style="color:#c83c3c">case</span> QEvent::InputMethodQuery:</div>
       <div>&nbsp;&nbsp;<span style="color:#c83c3c">if</span> (<span style="color:#e89152">testAttribute</span>(Qt::WA_InputMethodEnabled)) {</div>
-      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgba(var(--ink-rgb),.5)">// attribute 为 true，才进入查询流程</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:rgba(var(--paper-rgb),.5)">// attribute 为 true，才进入查询流程</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;QInputMethodQueryEvent *query = static_cast&lt;…&gt;(event);</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;Qt::InputMethodQueries queries = query->queries();</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c83c3c">for</span> (<span style="color:#c83c3c">uint</span> i = 0; i < 32; ++i) {</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qt::InputMethodQuery q = Qt::InputMethodQuery(<span style="color:#c83c3c">int</span>(queries & (1 << i)));</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c83c3c">if</span> (q) {</div>
-      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QVariant v = <span style="color:#e89152">inputMethodQuery</span>(q); <span style="color:rgba(var(--ink-rgb),.5)">// 调虚函数</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QVariant v = <span style="color:#e89152">inputMethodQuery</span>(q); <span style="color:rgba(var(--paper-rgb),.5)">// 调虚函数</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c83c3c">if</span> (q == Qt::ImEnabled && !v.isValid() && isEnabled())</div>
-      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = QVariant(<span style="color:#c83c3c">true</span>); <span style="color:rgba(var(--ink-rgb),.5)">// fallback: 没实现就默认 true</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;v = QVariant(<span style="color:#c83c3c">true</span>); <span style="color:rgba(var(--paper-rgb),.5)">// fallback: 没实现就默认 true</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query->setValue(q, v);</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;}</div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;query->accept();</div>
       <div>&nbsp;&nbsp;}</div>
-      <div>&nbsp;&nbsp;<span style="color:rgba(var(--ink-rgb),.5)">// WA_InputMethodEnabled=false → 整个查询被跳过 → 输入法拿不到 ImEnabled=true</span></div>
+      <div>&nbsp;&nbsp;<span style="color:rgba(var(--paper-rgb),.5)">// WA_InputMethodEnabled=false → 整个查询被跳过 → 输入法拿不到 ImEnabled=true</span></div>
       <div>&nbsp;&nbsp;<span style="color:#c83c3c">break</span>;</div>
     </div>
     <p class="lead" style="margin-top:2vh; font-size:1.1vw" data-anim><span style="font-family:var(--mono)">WA_InputMethodEnabled=false</span> 作为<strong>外层 gate</strong>，整段查询逻辑都不会执行。</p>
@@ -841,20 +841,20 @@
   <div class="frame" style="padding-top:5vh; overflow-y:auto; max-height:82vh">
     <div class="kicker" data-anim>步骤 4-5</div>
     <h2 class="h-xl" data-anim>同步状态 → IBus 不激活</h2>
-    <div style="margin-top:4vh; font-family:var(--mono); font-size:1.1vw; line-height:1.8; padding:2.5vh 3vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px" data-anim>
-      <div style="color:rgba(var(--ink-rgb),.5)">// qinputmethod.cpp — QInputMethod::update()</div>
+    <div style="margin-top:4vh; font-family:var(--mono); font-size:1.1vw; line-height:1.8; padding:2.5vh 3vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px" data-anim>
+      <div style="color:rgba(var(--paper-rgb),.5)">// qinputmethod.cpp — QInputMethod::update()</div>
       <div><span style="color:#c83c3c">if</span> (queries & Qt::ImEnabled) {</div>
       <div>&nbsp;&nbsp;<span style="color:#c83c3c">bool</span> enabled = d-><span style="color:#e89152">objectAcceptsInputMethod</span>(focus);</div>
       <div>&nbsp;&nbsp;QPlatformInputContextPrivate::<span style="color:#e89152">setInputMethodAccepted</span>(enabled);</div>
       <div>}</div>
     </div>
-    <div style="margin-top:3vh; font-family:var(--mono); font-size:1.1vw; line-height:1.8; padding:2.5vh 3vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px" data-anim>
-      <div style="color:rgba(var(--ink-rgb),.5)">// qibusplatforminputcontext.cpp — setFocusObject()</div>
+    <div style="margin-top:3vh; font-family:var(--mono); font-size:1.1vw; line-height:1.8; padding:2.5vh 3vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px" data-anim>
+      <div style="color:rgba(var(--paper-rgb),.5)">// qibusplatforminputcontext.cpp — setFocusObject()</div>
       <div><span style="color:#c83c3c">if</span> (object && <span style="color:#e89152">inputMethodAccepted</span>()) {</div>
-      <div>&nbsp;&nbsp;m_ibusProxy.<span style="color:#e89152">FocusIn</span>(); <span style="color:rgba(var(--ink-rgb),.5)">// false → 不进分支 → 引擎不激活</span></div>
+      <div>&nbsp;&nbsp;m_ibusProxy.<span style="color:#e89152">FocusIn</span>(); <span style="color:rgba(var(--paper-rgb),.5)">// false → 不进分支 → 引擎不激活</span></div>
       <div>}</div>
     </div>
-    <div data-anim style="margin-top:4vh; display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2vh 3vw; border:1px solid rgba(var(--ink-rgb),.15); border-radius:4px">
+    <div data-anim style="margin-top:4vh; display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2vh 3vw; border:1px solid rgba(var(--paper-rgb),.15); border-radius:4px">
       <div style="text-align:center"><div class="stat-label">明文</div><div style="color:#2a7d2a; font-size:1.4vw">✅ 可用</div></div>
       <div style="text-align:center"><div class="stat-label">密文</div><div style="color:#c83c3c; font-size:1.4vw">❌ 禁用</div></div>
       <div style="text-align:center"><div class="stat-label">切回 Normal</div><div style="color:#c83c3c; font-size:1.4vw">❌ 恢复</div></div>
@@ -898,15 +898,15 @@
     <div class="kicker" data-anim>短期 + 长期</div>
     <h2 class="h-xl" data-anim>DTK 临时修复 + 向上游提交</h2>
     <div class="grid-2-6-6" style="margin-top:6vh; gap:4vw">
-      <div data-anim style="padding:3vh 3vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px">
-        <div class="stat-label" style="margin-bottom:2vh; color:rgba(var(--ink-rgb),.5)">DTK 临时修复（eventFilter）</div>
-        <div style="font-size:1.3vw; line-height:2; color:rgba(var(--ink-rgb),.7)">
+      <div data-anim style="padding:3vh 3vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px">
+        <div class="stat-label" style="margin-bottom:2vh; color:rgba(var(--paper-rgb),.5)">DTK 临时修复（eventFilter）</div>
+        <div style="font-size:1.3vw; line-height:2; color:rgba(var(--paper-rgb),.7)">
           在 DPasswordEdit 里拦截内部 QLineEdit 的 <span style="font-family:var(--mono)">InputMethod</span> 和 <span style="font-family:var(--mono)">InputMethodQuery</span> 事件，不拦 <span style="font-family:var(--mono)">KeyPress</span>，<span style="font-family:var(--mono)">#if</span> 宏保护 Qt5 不受影响。这个方案负责在 Qt 上游合入之前把问题按住。
         </div>
       </div>
       <div data-anim style="padding:3vh 3vw; border:1px solid rgba(42,125,42,.3); border-radius:4px; background:rgba(42,125,42,.04)">
         <div class="stat-label" style="color:#2a7d2a; margin-bottom:2vh">QTBUG-147203</div>
-        <div style="font-size:1.3vw; line-height:2; color:rgba(var(--ink-rgb),.7)">
+        <div style="font-size:1.3vw; line-height:2; color:rgba(var(--paper-rgb),.7)">
           QLineEdit<br>
           QTextEdit<br>
           QPlainTextEdit<br>
@@ -914,8 +914,8 @@
         </div>
       </div>
     </div>
-    <div data-anim style="margin-top:4vh; font-family:var(--mono); font-size:1.3vw; padding:2.5vh 3vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px">
-      <span style="color:rgba(var(--ink-rgb),.4)">// Patch 主体</span><br>
+    <div data-anim style="margin-top:4vh; font-family:var(--mono); font-size:1.3vw; padding:2.5vh 3vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px">
+      <span style="color:rgba(var(--paper-rgb),.4)">// Patch 主体</span><br>
       <span style="color:#c83c3c">case</span> Qt::ImEnabled:<br>
       &nbsp;&nbsp;<span style="color:#c83c3c">return</span> testAttribute(Qt::WA_InputMethodEnabled)<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&& isEnabled()<br>
@@ -970,17 +970,17 @@
   <div class="frame" style="padding-top:6vh">
     <div class="kicker" data-anim>回溯</div>
     <h2 class="h-xl" data-anim>完整排查路径</h2>
-    <div style="margin-top:5vh; font-family:var(--mono); font-size:1.2vw; line-height:2.2; padding:3vh 4vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px" data-anim>
+    <div style="margin-top:5vh; font-family:var(--mono); font-size:1.2vw; line-height:2.2; padding:3vh 4vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px" data-anim>
       <div>dde-polkit-agent 密码框异常</div>
-      <div style="color:rgba(var(--ink-rgb),.4)">  → DPasswordEdit 初始化 / 切换逻辑</div>
-      <div style="color:rgba(var(--ink-rgb),.4)">  → 手动 setAttribute() 无效 → 排除 DTK 层问题</div>
-      <div style="color:rgba(var(--ink-rgb),.4)">  → DTK demo，Qt5/Qt6 对比 → 锁定 Qt 版本差异</div>
-      <div style="color:rgba(var(--ink-rgb),.4)">  → QLineEdit 最小复现（3 个 set 调用）</div>
-      <div style="color:rgba(var(--ink-rgb),.4)">  → Qt5/Qt6 QWidget::event() + inputMethodQuery() 源码对比</div>
-      <div style="color:rgba(var(--ink-rgb),.4)">  → setEchoMode() 源码 → 改的是 hints 不是 attribute</div>
-      <div style="color:rgba(var(--ink-rgb),.4)">  → IBus HiddenTextCapability 链路分析</div>
+      <div style="color:rgba(var(--paper-rgb),.4)">  → DPasswordEdit 初始化 / 切换逻辑</div>
+      <div style="color:rgba(var(--paper-rgb),.4)">  → 手动 setAttribute() 无效 → 排除 DTK 层问题</div>
+      <div style="color:rgba(var(--paper-rgb),.4)">  → DTK demo，Qt5/Qt6 对比 → 锁定 Qt 版本差异</div>
+      <div style="color:rgba(var(--paper-rgb),.4)">  → QLineEdit 最小复现（3 个 set 调用）</div>
+      <div style="color:rgba(var(--paper-rgb),.4)">  → Qt5/Qt6 QWidget::event() + inputMethodQuery() 源码对比</div>
+      <div style="color:rgba(var(--paper-rgb),.4)">  → setEchoMode() 源码 → 改的是 hints 不是 attribute</div>
+      <div style="color:rgba(var(--paper-rgb),.4)">  → IBus HiddenTextCapability 链路分析</div>
       <div style="color:#c83c3c">  → 根因：QLineEdit 的 override 绕过 WA_InputMethodEnabled</div>
-      <div style="color:rgba(var(--ink-rgb),.4)">  → DTK eventFilter 临时修复</div>
+      <div style="color:rgba(var(--paper-rgb),.4)">  → DTK eventFilter 临时修复</div>
       <div style="color:#2a7d2a">  → QTBUG-147203 Patch（长期修复）</div>
     </div>
   </div>
@@ -1123,19 +1123,19 @@
     <div class="kicker" data-anim>工具 03 · AI 模型平台</div>
     <h2 class="h-xl" data-anim>免费不限量使用几乎所有对话模型</h2>
     <p class="lead" style="margin-top:2vh; font-size:1.2vw" data-anim>不需要分别注册 OpenAI、Anthropic、Google 等各家账号，也不需要各充各的钱。</p>
-      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 2vw; border:1px solid rgba(var(--ink-rgb),.1); border-radius:4px; align-items:center">
+      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 2vw; border:1px solid rgba(var(--paper-rgb),.1); border-radius:4px; align-items:center">
         <div style="font-size:1.6vw; font-weight:600">Battle Mode</div>
-        <div style="font-size:1.3vw; color:rgba(var(--ink-rgb),.5)">两个匿名模型同时回答</div>
+        <div style="font-size:1.3vw; color:rgba(var(--paper-rgb),.5)">两个匿名模型同时回答</div>
         <div style="font-size:1.3vw">选满意的一个继续往下聊</div>
       </div>
-      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 2vw; border:1px solid rgba(var(--ink-rgb),.1); border-radius:4px; align-items:center">
+      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 2vw; border:1px solid rgba(var(--paper-rgb),.1); border-radius:4px; align-items:center">
         <div style="font-size:1.6vw; font-weight:600">Side by Side</div>
-        <div style="font-size:1.3vw; color:rgba(var(--ink-rgb),.5)">选定两个模型</div>
+        <div style="font-size:1.3vw; color:rgba(var(--paper-rgb),.5)">选定两个模型</div>
         <div style="font-size:1.3vw">并列对比回答</div>
       </div>
-      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 2vw; border:1px solid rgba(var(--ink-rgb),.1); border-radius:4px; align-items:center">
+      <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 2vw; border:1px solid rgba(var(--paper-rgb),.1); border-radius:4px; align-items:center">
         <div style="font-size:1.6vw; font-weight:600">Direct</div>
-        <div style="font-size:1.3vw; color:rgba(var(--ink-rgb),.5)">直接选一个模型</div>
+        <div style="font-size:1.3vw; color:rgba(var(--paper-rgb),.5)">直接选一个模型</div>
         <div style="font-size:1.3vw">跟普通 chat 一样</div>
       </div>
     <div class="callout" data-anim style="margin-top:4vh">日常 Chat 型 AI 需求都在这里解决——不用切换平台，不用管额度。模型选型时用 Battle Mode 对比，选最顺手的继续用。</div>
@@ -1366,7 +1366,7 @@ function go(n){
 let overviewOn=false;
 const ov=document.createElement('div');
 ov.id='overview';
-ov.style.cssText='position:fixed;inset:0;z-index:100;background:rgba(var(--ink-rgb),.92);backdrop-filter:blur(12px);display:none;overflow-y:auto;padding:4vh 4vw';
+ov.style.cssText='position:fixed;inset:0;z-index:100;background:rgba(var(--paper-rgb),.92);backdrop-filter:blur(12px);display:none;overflow-y:auto;padding:4vh 4vw';
 document.body.appendChild(ov);
 
 function buildOverview(){
