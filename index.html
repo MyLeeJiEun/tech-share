@@ -42,7 +42,9 @@
   /* width: NSLIDES * 100vw，会在 JS 里动态矫正 */
   #deck{position:fixed;inset:0;width:10000vw;height:100vh;display:flex;flex-wrap:nowrap;transition:transform .9s cubic-bezier(.77,0,.175,1);z-index:10;will-change:transform}
   .slide{width:100vw;height:100vh;flex:0 0 100vw;position:relative;padding:6vh 6vw 10vh 6vw;display:flex;flex-direction:column;overflow:hidden}
-  .slide.light{color:var(--ink);background:var(--paper)}
+  .slide[style*="overflow-y:auto"]::-webkit-scrollbar{width:4px}
+  .slide[style*="overflow-y:auto"]::-webkit-scrollbar-thumb{background:rgba(var(--ink-rgb),.2);border-radius:2px}
+  .slide[style*="overflow-y:auto"]{padding-bottom:2vh}
   .slide.dark{color:var(--paper);background:var(--ink)}
 
   /* 默认页：遮罩较厚，保证文字可读 */
@@ -492,7 +494,7 @@
   </div>
   <div class="frame" style="display:grid; gap:4vh; align-content:center; min-height:80vh">
     <div class="kicker" data-anim>技术分享 · 两个部分</div>
-    <h1 class="h-hero" style="font-size:7.5vw" data-anim>从密码框到 Qt 上游</h1>
+    <h1 class="h-hero" style="font-size:7.5vw" data-anim>Hello，Everyone</h1>
     <h2 class="h-sub" data-anim>Part 1 · Bug 修复历程　｜　Part 2 · 工具资源分享</h2>
     <p class="lead" style="max-width:55vw" data-anim>
       一次桌面 Bug 排查 + 几个好用的开发工具
@@ -520,17 +522,17 @@
       <div class="stat-card" data-anim>
         <div class="stat-label">Part 1 · ~13 min</div>
         <div class="stat-nb" style="font-size:4.2vw">Bug → Patch</div>
-        <div class="stat-note">dde-polkit-agent 密码框 → Qt 源码 → QTBUG-147203</div>
+        <div class="stat-note">dde-polkit-agent 密码框 → DTK → Qt 源码 → QTBUG-147203</div>
       </div>
       <div class="stat-card" data-anim>
         <div class="stat-label">Part 2 · ~12 min</div>
         <div class="stat-nb" style="font-size:4.2vw">Love &amp; Share</div>
-        <div class="stat-note">zread · CNB · Arena.ai · 天赋好书</div>
+        <div class="stat-note">Zread · CNB · Arena.ai · 天赋好书</div>
       </div>
     </div>
   </div>
   <div class="foot">
-    <div>共同点：动手验证，不要假设</div>
+    <div>动手验证</div>
     <div>— · —</div>
   </div>
 </section>
@@ -545,7 +547,7 @@
     <div class="kicker" data-anim>Part 1</div>
     <h1 class="h-hero" style="font-size:8.5vw" data-anim>Bug → Patch</h1>
     <p class="lead" style="max-width:55vw" data-anim>
-      一个密码框输入法问题，从现象一路追到 Qt 源码，最终向上游提交了修复。
+      一个密码框输入法相关问题，从现象开始一路到 Qt 源码，知道了BUG产生的原因。
     </p>
   </div>
   <div class="foot">
@@ -561,7 +563,7 @@
     <div>04 / 23</div>
   </div>
   <div class="frame" style="padding-top:6vh">
-    <div class="kicker" data-anim>用户看到的</div>
+    <div class="kicker" data-anim>密码框使用者看到的</div>
     <h2 class="h-xl" data-anim>密码框切明文后，输入法恢复了</h2>
     <div style="margin-top:6vh; display:grid; gap:2vh">
       <div data-anim style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2vw; padding:2.5vh 3vw; border:1px solid rgba(var(--ink-rgb),.15); border-radius:4px">
@@ -580,7 +582,7 @@
         <div style="font-size:2vw; font-weight:700; color:#c83c3c">❌ 可以输入中文</div>
       </div>
     </div>
-    <p class="lead" style="margin-top:4vh" data-anim>这里的问题不是"用户能不能用键盘输中文"——物理键盘输入拉丁字符一直是正常的。问题是<strong>输入法框架通过 `QInputMethodEvent` 把中文字符直接提交进了密码框——此时输入法本应处于禁用状态</strong>。</p>
+    <p class="lead" style="margin-top:4vh" data-anim>问题是<strong>输入法把中文字符直接提交进了密码框——此时输入法本应处于禁用状态</strong>。</p>
   </div>
   <div class="foot">
     <div>dde-polkit-agent 认证弹窗 · 密码输入框</div>
@@ -603,7 +605,7 @@
     </div>
     <p class="lead" style="margin-top:2vh; font-size:1.2vw; line-height:1.7" data-anim>切换明文只改 <span style="font-family:var(--mono)">EchoMode</span>，没有重新打开输入法，也没有重新设置 <span style="font-family:var(--mono)">WA_InputMethodEnabled</span>。</p>
     <p class="lead" style="margin-top:1.5vh; font-size:1.2vw; line-height:1.7" data-anim><strong>问题：</strong>设置了 <span style="font-family:var(--mono)">WA_InputMethodEnabled=false</span> 的 <span style="font-family:var(--mono)">QLineEdit</span>，为什么从 <span style="font-family:var(--mono)">Password</span> 切到 <span style="font-family:var(--mono)">Normal</span> 后输入法又恢复了？</p>
-    <p class="lead" style="margin-top:1.5vh; font-size:1.15vw; line-height:1.6" data-anim>我最初的反应是：是不是 DTK 切换 <span style="font-family:var(--mono)">EchoMode</span> 时漏掉了什么？于是手动在 <span style="font-family:var(--mono)">setEchoMode(Normal)</span> 之后补了一行 <span style="font-family:var(--mono)">setAttribute(Qt::WA_InputMethodEnabled, false)</span> —— <strong>完全没有用</strong>。这个现象第一次告诉我：问题可能不在 DTK 层，而在 Qt 的输入法查询链路本身不再尊重这个 attribute 了。</p>
+    <p class="lead" style="margin-top:1.5vh; font-size:1.15vw; line-height:1.6" data-anim>我最初的反应是：是不是 DTK 切换 <span style="font-family:var(--mono)">EchoMode</span> 时漏掉了什么？于是手动在 <span style="font-family:var(--mono)">setEchoMode(Normal)</span> 之后补了一行 <span style="font-family:var(--mono)">setAttribute(Qt::WA_InputMethodEnabled, false)</span> —— <strong>完全没有用</strong>。这个现象第一次告诉我：问题可能不在 DTK 层，而是 Qt ，当然此时仅仅是我的猜测。</p>
   </div>
   <div class="foot">
     <div>DTK · DPasswordEdit::init()</div>
@@ -620,7 +622,7 @@
   <div class="frame" style="padding-top:6vh">
     <div class="kicker" data-anim>第二层 · 版本差异</div>
     <h2 class="h-xl" data-anim>DTK 项目自带 example demo</h2>
-    <p class="lead" style="margin-top:3vh" data-anim>我一开始运行的是 Qt5 编译的 demo，行为完全符合预期——密码框不管密文明文都无法输入中文。<strong>后来在 Qt6 环境跑同一个 demo 才发现行为不对。</strong></p>
+    <p class="lead" style="margin-top:3vh" data-anim>我一开始由于手误运行的了DTK5（编译自Qt5）自带的example，发现行为完全符合预期——密码框不管密文明文都无法输入中文，这完全出乎我的意料。<strong>好在我很快就反应过来，自己跑错了example，然后发现在 DTK6(编译自Qt6) 自带的example中是存在预期中的问题的 。</strong></p>
     <div style="margin-top:4vh; display:grid; gap:3vh">
       <div data-anim style="display:grid; grid-template-columns:1fr 1fr; gap:4vw; padding:3vh 3vw; border:1px solid rgba(var(--ink-rgb),.1); border-radius:4px">
         <div><div class="stat-label" style="color:#2a7d2a">Qt5 / DTK5</div><div style="font-size:1.6vw; margin-top:1vh">密文❌中文 · 明文❌中文 ✅</div></div>
@@ -784,12 +786,12 @@
 </section>
 
 <!-- ===== S11 根因：IBus 声明不支持 HiddenTextCapability ===== -->
-<section class="slide dark">
+<section class="slide dark" style="overflow-y:auto">
   <div class="chrome">
     <div>Part 1 · 根因</div>
     <div>11 / 23</div>
   </div>
-  <div class="frame" style="padding-top:3vh">
+  <div class="frame" style="padding-top:3vh; overflow-y:auto; max-height:84vh">
     <div class="kicker" data-anim>前置：setEchoMode 设置了哪些 hints</div>
     <h2 class="h-xl" data-anim>IBus 声明不支持 HiddenTextCapability</h2>
     <div style="margin-top:2vh; font-family:var(--mono); font-size:0.85vw; line-height:1.5; padding:1.5vh 2vw; border:1px solid rgba(var(--paper-rgb),.10); border-radius:4px; background:rgba(var(--paper-rgb),.03)" data-anim>
@@ -831,12 +833,12 @@
 </section>
 
 <!-- ===== S12 根因：update + setFocusObject ===== -->
-<section class="slide light">
+<section class="slide light" style="overflow-y:auto">
   <div class="chrome">
     <div>Part 1 · 根因（续）</div>
     <div>12 / 23</div>
   </div>
-  <div class="frame" style="padding-top:5vh">
+  <div class="frame" style="padding-top:5vh; overflow-y:auto; max-height:82vh">
     <div class="kicker" data-anim>步骤 4-5</div>
     <h2 class="h-xl" data-anim>同步状态 → IBus 不激活</h2>
     <div style="margin-top:4vh; font-family:var(--mono); font-size:1.1vw; line-height:1.8; padding:2.5vh 3vw; border:1px solid rgba(var(--ink-rgb),.12); border-radius:4px" data-anim>
@@ -887,12 +889,12 @@
 </section>
 
 <!-- ===== S14 修复策略 ===== -->
-<section class="slide light">
+<section class="slide light" style="overflow-y:auto">
   <div class="chrome">
     <div>Part 1 · 修复</div>
     <div>14 / 23</div>
   </div>
-  <div class="frame" style="padding-top:6vh">
+  <div class="frame" style="padding-top:6vh; overflow-y:auto; max-height:80vh">
     <div class="kicker" data-anim>短期 + 长期</div>
     <h2 class="h-xl" data-anim>DTK 临时修复 + 向上游提交</h2>
     <div class="grid-2-6-6" style="margin-top:6vh; gap:4vw">
@@ -927,14 +929,14 @@
 </section>
 
 <!-- ===== S15 Review ===== -->
-<section class="slide dark">
+<section class="slide dark" style="overflow-y:auto">
   <div class="chrome">
     <div>Part 1 · Review</div>
     <div>15 / 23</div>
   </div>
-  <div class="frame" style="padding-top:5vh">
+  <div class="frame" style="padding-top:5vh; overflow-y:auto; max-height:82vh">
     <div class="kicker" data-anim>论证策略</div>
-    <h2 class="h-xl" data-anim>不说是安全修复，说是 API 一致性修复</h2>
+    <h2 class="h-xl" data-anim>Reviewer的观点</h2>
     <div style="margin-top:5vh; display:grid; gap:2vh">
       <div data-anim style="display:grid; grid-template-columns:1.5fr 3fr; gap:2vw; padding:2vh 2vw; border:1px solid rgba(var(--paper-rgb),.12); border-radius:4px; align-items:center; font-size:1.2vw">
         <div style="font-weight:600">Volker Hilsheimer</div>
